@@ -132,8 +132,7 @@ footer {
     }
 
     div {
-      background-image: url("hhttps://h5static.0am08m.com/assets/v4_common/tabBar.png");
-      background-image: url("https://h5static.0am08m.com/assets/v4_common/tabBar.png.webp?version=1583773880435");
+      background-image: url("https://h5static.0am08m.com/assets/v4_common/tabBar.png");
       background-repeat: no-repeat;
       width: 6.3rem;
       height: 6.3rem;

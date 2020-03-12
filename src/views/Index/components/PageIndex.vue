@@ -243,7 +243,7 @@ $desc: #a5a9b3;
 header {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 3.7rem;
+  margin-bottom: 2rem;
   align-items: center;
 
   .picture {
@@ -254,7 +254,6 @@ header {
   }
 
   .header-right {
-    background: url(https://h5static.0am08m.com/assets/v4_common/common_2/out/img/sprite.png);
     background: url(https://h5static.0am08m.com/assets/v4_common/common_2/out/img/sprite.png?version=1583111633321)
       no-repeat;
     background-position: -157.5rem 0;
