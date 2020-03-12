@@ -47,12 +47,22 @@ export default {
   data() {
     return {
       active: 0,
-      activeItem: 'index'
+      activeItem: 'index',
     };
+  },
+  computed: {
+    switchRegisterModal() {
+      return this.$store.state.pageIndex.switchRegisterModal;
+    }
   },
   methods: {
     setActive(item) {
+      // 若註冊燈箱開啟，且切換選單，就關閉註冊燈箱。
+      if (this.switchRegisterModal) { this.closeModal(); }
       this.activeItem = item;
+    },
+    closeModal() {
+      this.$store.dispatch("pageIndex/switchRegisterModal", this.switchModal);
     }
   }
 };
