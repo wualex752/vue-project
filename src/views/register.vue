@@ -6,15 +6,18 @@
         <h1>注册</h1>
       </div>
       <div class="register__logo">{{formType}}</div>
-      
+
       <div class="register__form" v-if="formType ==='register'">
         <!-- <input type="password" style="display:none;" readonly /> -->
         <div>
           <div class="register__form__item" :class="{ 'form-group--error': $v.account.$error }">
-            <img
-              class="mr-15"
-              src="https://h5static.0am08m.com/assets/entry/entry_user_icon.png.webp?version=1583111633321"
-            />
+            <picture>
+              <source
+                srcset="https://h5static.0am08m.com/assets/entry/entry_user_icon.png.webp?version=1583111633321"
+                type="image/webp"
+              />
+              <img class="mr-15" src="https://h5static.0am08m.com/assets/entry/entry_user_icon.png" />
+            </picture>
             <div class="form-group">
               <div class="form-group__control">
                 <input type="search" class="form__input" v-model.trim="$v.account.$model" />
@@ -23,9 +26,16 @@
             </div>
 
             <div @click="clear('account')">
-              <img
-                src="https://h5static.0am08m.com/assets/entry/entry_clear_icon.png.webp?version=1583111633321"
-              />
+              <picture>
+                <source
+                  srcset="https://h5static.0am08m.com/assets/entry/entry_clear_icon.png.webp?version=1583111633321"
+                  type="image/webp"
+                />
+                <img
+                  class="mr-15"
+                  src="https://h5static.0am08m.com/assets/entry/entry_clear_icon.png"
+                />
+              </picture>
             </div>
 
             <!-- 帳號驗證錯誤，出現的錯誤訊息 -->
@@ -33,10 +43,17 @@
           </div>
 
           <div class="register__form__item" :class="{ 'form-group--error': $v.password.$error }">
-            <img
-              class="mr-15"
-              src="https://h5static.0am08m.com/assets/entry/entry_password_icon.png.webp?version=1583111633321"
-            />
+            <picture>
+              <source
+                srcset="https://h5static.0am08m.com/assets/entry/entry_password_icon.png.webp?version=1583111633321"
+                type="image/webp"
+              />
+              <img
+                class="mr-15"
+                src="https://h5static.0am08m.com/assets/entry/entry_password_icon.png"
+              />
+            </picture>
+
             <div class="form-group">
               <div class="form-group__control">
                 <input v-if="passwordType" v-model.trim="$v.password.$model" type="text" />
@@ -47,14 +64,27 @@
 
             <!-- 小眼睛切換圖片 -->
             <div @click="passwordType = !passwordType">
-              <img
-                v-if="passwordType"
-                src="https://h5static.0am08m.com/assets/entry/entry_hide_password.png.webp?version=1583111633321"
-              />
-              <img
-                v-else
-                src="https://h5static.0am08m.com/assets/entry/entry_display_password.png.webp?version=1583111633321"
-              />
+              <picture v-if="passwordType">
+                <source
+                  srcset="https://h5static.0am08m.com/assets/entry/entry_hide_password.png.webp?version=1583111633321"
+                  type="image/webp"
+                />
+                <img
+                  class="mr-15"
+                  src="https://h5static.0am08m.com/assets/entry/entry_hide_password.png"
+                />
+              </picture>
+
+              <picture v-else>
+                <source
+                  srcset="https://h5static.0am08m.com/assets/entry/entry_display_password.png.webp?version=1583111633321"
+                  type="image/webp"
+                />
+                <img
+                  class="mr-15"
+                  src="https://h5static.0am08m.com/assets/entry/entry_display_password.png"
+                />
+              </picture>
             </div>
 
             <!-- 密碼驗證錯誤，出現的錯誤訊息 -->
@@ -73,10 +103,17 @@
             class="register__form__item"
             :class="{ 'form-group--error': $v.repeatPassword.$error }"
           >
-            <img
-              class="mr-15"
-              src="https://h5static.0am08m.com/assets/entry/entry_password_icon.png.webp?version=1583111633321"
-            />
+            <picture>
+              <source
+                srcset="https://h5static.0am08m.com/assets/entry/entry_password_icon.png.webp?version=1583773880435"
+                type="image/webp"
+              />
+              <img
+                class="mr-15"
+                src="https://h5static.0am08m.com/assets/entry/entry_password_icon.png"
+              />
+            </picture>
+
             <div class="form-group">
               <div class="form-group__control">
                 <input
@@ -91,25 +128,47 @@
 
             <!-- 小眼睛切換圖片 -->
             <div @click="repeatPasswordType = !repeatPasswordType">
-              <img
-                v-if="repeatPasswordType"
-                src="https://h5static.0am08m.com/assets/entry/entry_hide_password.png.webp?version=1583111633321"
-              />
-              <img
-                v-else
-                src="https://h5static.0am08m.com/assets/entry/entry_display_password.png.webp?version=1583111633321"
-              />
+              <!-- 小眼睛切換圖片 -->
+              <picture v-if="passwordType">
+                <source
+                  srcset="https://h5static.0am08m.com/assets/entry/entry_hide_password.png.webp?version=1583111633321"
+                  type="image/webp"
+                />
+                <img
+                  class="mr-15"
+                  src="https://h5static.0am08m.com/assets/entry/entry_hide_password.png"
+                />
+              </picture>
+
+              <picture v-else>
+                <source
+                  srcset="https://h5static.0am08m.com/assets/entry/entry_display_password.png.webp?version=1583111633321"
+                  type="image/webp"
+                />
+                <img
+                  class="mr-15"
+                  src="https://h5static.0am08m.com/assets/entry/entry_display_password.png"
+                />
+              </picture>
             </div>
 
             <!-- 確認密碼 驗證錯誤，出現的錯誤訊息 -->
             <div class="error" v-if="!$v.repeatPassword.sameAsPassword">输入的密码不一致</div>
           </div>
 
+          <!-- 驗證碼 -->
           <div class="register__form__item">
-            <img
-              class="mr-15"
-              src="https://h5static.0am08m.com/assets/entry/entry_verify_icon.png.webp?version=1583111633321"
-            />
+            <picture>
+              <source
+                srcset="https://h5static.0am08m.com/assets/entry/entry_verify_icon.png.webp?version=1583111633321"
+                type="image/webp"
+              />
+              <img
+                class="mr-15"
+                src="https://h5static.0am08m.com/assets/entry/entry_verify_icon.png"
+              />
+            </picture>
+
             <div class="form-group">
               <div class="form-group__control">
                 <input v-model.trim="$v.verify.$model" type="text" value />
@@ -118,6 +177,7 @@
             </div>
 
             <div>
+              
               <img
                 data-analytics="button"
                 data-label="验证码图片"
@@ -139,7 +199,6 @@
       </div>
 
       <Login v-else :switchRegister="formType" />
-
     </div>
   </div>
 </template>
@@ -151,7 +210,7 @@ import { required, minLength, sameAs } from "vuelidate/lib/validators";
 import IconBase from "@/assets/Icon/IconBase";
 import IconInfo from "@/assets/Icon/IconInfo";
 
-import Login from './login'
+import Login from "./login";
 
 export default {
   name: "register",
@@ -176,7 +235,7 @@ export default {
       submitStatus: "",
       passwordType: false,
       repeatPasswordType: false,
-      formType: 'register'
+      formType: "register"
     };
   },
   methods: {
@@ -198,7 +257,7 @@ export default {
       this.$store.dispatch("pageIndex/switchRegisterModal", false);
     },
     switchLogin() {
-      this.formType = 'login';
+      this.formType = "login";
     }
   },
   validations: {
@@ -265,8 +324,6 @@ export default {
       top: 6rem;
       left: 3rem;
     }
-
-    
   }
 
   &__logo {
