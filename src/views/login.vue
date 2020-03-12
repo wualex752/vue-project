@@ -113,6 +113,7 @@ export default {
     switchRegister() {
       this.$emit("switchRegister", "register");
     }
+    
   }
 };
 </script>

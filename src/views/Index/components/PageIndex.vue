@@ -1,22 +1,28 @@
 <template>
   <div>
     <header>
-      <img
-        src="https://h5static.0am08m.com/assets/v4_home/homeLogo.png.webp?version=1583111633321"
-        alt
-      />
+      <pictrue class="picture">
+        <source
+          class="img-fluid"
+          srcset="https://h5static.0am08m.com/assets/v4_home/homeLogo.png.webp?version=1583111633321"
+          type="image/webp"
+        />
+        <img class="img-fluid" src="https://h5static.0am08m.com/assets/v4_home/homeLogo.png" alt />
+      </pictrue>
       <div class="header-right"></div>
     </header>
 
     <div class="slick-custom">
       <VueSlickCarousel v-bind="settings">
         <div class="slick-container" v-for="n in 3" :key="n">
-          <div>
-            <img
-              class="img-fluid"
-              src="https://static.0am08m.com//prod/banner/m_bab6a299f356ff9b176b7e29f86b9721aa53f399.jpg"
-              alt
-            />
+          <div class="border-radius">
+            <div class="slick-custom-item">
+              <img
+                class="border-radius img-fluid"
+                src="https://static.0am08m.com//prod/banner/m_bab6a299f356ff9b176b7e29f86b9721aa53f399.jpg"
+                alt
+              />
+            </div>
           </div>
         </div>
       </VueSlickCarousel>
@@ -170,15 +176,24 @@ $desc: #a5a9b3;
 header {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 2rem 3.7rem;
   align-items: center;
 
+  .picture {
+    width: 17.81rem;
+    img {
+      pointer-events: none;
+    }
+  }
+
   .header-right {
+    background: url(https://h5static.0am08m.com/assets/v4_common/common_2/out/img/sprite.png);
     background: url(https://h5static.0am08m.com/assets/v4_common/common_2/out/img/sprite.png?version=1583111633321)
       no-repeat;
-    background-position: -1020px 0;
-    height: 42px;
-    width: 45px;
+    background-position: -157.5rem 0;
+    background-size: 220rem;
+    width: 6.1rem;
+    height: 6.1rem;
   }
 }
 
@@ -189,11 +204,19 @@ header {
 .slider-container {
   div {
     padding: 20px;
+    border-radius: 2rem;
 
     img {
       border-radius: 20px;
     }
   }
+}
+.border-radius {
+  border-radius: 2rem;
+}
+
+.slick-custom-item {
+  margin: 0 3.7rem;
 }
 
 .slick-dots {
@@ -203,7 +226,7 @@ header {
 .noticebar {
   width: 100%;
   height: 100%;
-  font-size: .24rem;
+  font-size: 0.24rem;
   &__right {
     margin-left: 1rem;
     img {
@@ -257,7 +280,6 @@ header {
           /* background-position: 0 0; */
           width: 7.5rem;
           height: 7.5rem;
-
         }
 
         span {
