@@ -93,6 +93,7 @@ body,
 html {
   width: 100%;
   height: 100%;
+  min-height: 100%;
 }
 
 .container {
@@ -105,15 +106,9 @@ html {
   top: 0;
 }
 
+
 // =================================================
 
-body,
-html {
-  -ms-touch-action: none;
-  touch-action: none;
-  min-height: 100%;
-  overflow: hidden;
-}
 
 *,
 *:before,
@@ -145,7 +140,6 @@ input:focus {
 
 .row {
   width: 100%;
-  padding: 0 0.9375rem;
   align-items: center;
   display: flex;
 }
@@ -186,8 +180,24 @@ input:focus {
 
 // 跑馬燈
 .van-dialog__header {
-  font-size: 4.4rem;
+  font-size: .24rem;
 }
 .van-button__text {
-  font-size: 4.4rem;
+  font-size: .24rem;
+}
+.noticebar .van-notice-bar {
+  padding: 0 .28rem;
+  height: .36rem;
+}
+
+.van-notice-bar__left-icon, 
+.van-notice-bar__right-icon {
+  .van-icon__image {
+    width: .32rem;
+    height: .32rem;
+  }
+}
+
+section {
+  padding: 0 .28rem;
 }

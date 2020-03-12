@@ -28,9 +28,19 @@ export default {
 <style lang="scss" scoped>
 .game__right__item {
   display: block;
-  padding-bottom: 1rem;
+  width: 100%;
+  height: 2.8rem;
+  border-radius: .12rem;
+  margin-bottom: .2rem;
+  box-shadow: 0 0.04rem 0.28rem 0 rgba(65,70,92,.3);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   img {
-    height: 266px;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
