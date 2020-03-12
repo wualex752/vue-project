@@ -75,8 +75,8 @@ footer {
   bottom: 0;
   width: 100%;
   background: white;
-  height: 17.96rem;
-  padding: 1.2rem 0rem;
+  height: 12.5rem;
+  /* padding: 1.2rem 0rem; */
   z-index: 100;
   ul {
     display: flex;
@@ -98,32 +98,32 @@ footer {
     transition: all .3s;
 
     &:first-child div {
-      background-position: -1rem -1rem;
+      background-position: -1rem 0rem;
     }
 
     &:nth-child(2) div {
-      background-position: -12rem -1rem;
+      background-position: -8rem 0rem;
     }
     &:nth-child(3) div {
-      background-position: -24rem -1rem;
+      background-position: -15rem 0rem;
     }
     &:nth-child(4) div {
-      background-position: -45rem -1rem;
+      background-position: -29rem 0rem;
     }
 
     &.active {
 
       &:first-child div {
-        background-position: -56rem -1rem;
+        background-position: -36rem -0rem;
       }
       &:nth-child(2) div {
-        background-position: -68rem -1rem;
+        background-position: -43rem -0rem;
       }
       &:nth-child(3) div {
-        background-position: -79rem -1rem;
+        background-position: -50rem -0rem;
       }
       &:nth-child(4) div {
-        background-position: -90rem -1rem;
+        background-position: -64rem -0rem;
       }
       a {
         color: #d2b79c;
@@ -135,10 +135,10 @@ footer {
       background-image: url("hhttps://h5static.0am08m.com/assets/v4_common/tabBar.png");
       background-image: url("https://h5static.0am08m.com/assets/v4_common/tabBar.png.webp?version=1583773880435");
       background-repeat: no-repeat;
-      width: 9rem;
-      height: 9rem;
+      width: 6.3rem;
+      height: 6.3rem;
       margin: 0 auto;
-      background-size: 111rem;
+      background-size: 70rem;
     }
 
     a {

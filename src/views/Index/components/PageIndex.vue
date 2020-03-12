@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pageIndex">
     <header>
       <pictrue class="picture">
         <source
@@ -29,20 +29,46 @@
     </div>
 
     <!-- 跑馬燈 -->
-    <div class="noticebar">
-      <van-notice-bar
-        color="#9aa4c2"
-        background="#fff"
-        right-icon="https://h5static.0am08m.com/assets/v4_home/iconHotEvents.png.webp?version=1583111633321"
-        left-icon="https://h5static.0am08m.com/assets/v4_home/iconNoitce.png.webp?version=1583111633321
-      "
-      >尊敬的客户：我司BBIN真人于2020年3月4日（周三）09:00-11:25进行系统例行维护，届时BBIN真人场馆将无法进行游戏和转账，其他场馆正常运行，请维护前将场馆内的余额转出，给您带来不便还请谅解。谢谢！</van-notice-bar>
-      <!-- <div class="noticebar__right">
-        <img
-          src="https://h5static.0am08m.com/assets/v4_home/iconHotEvents.png.webp?version=1583111633321"
-          alt
-        />
-      </div>-->
+    <div class="notice-container">
+      <div class="noticebar">
+        <div class="noticebar__left">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="https://h5static.0am08m.com/assets/v4_home/iconNoitce.png.webp?version=1583773880435"
+            />
+            <img
+              class="img-fluid"
+              src="https://h5static.0am08m.com/assets/v4_home/iconNoitce.png"
+              alt
+            />
+          </picture>
+        </div>
+        <van-notice-bar
+          color="#9aa4c2"
+          background="#fff"
+          right-icon="https://h5static.0am08m.com/assets/v4_home/iconHotEvents.png.webp?version=1583111633321"
+          left-icon="https://h5static.0am08m.com/assets/v4_home/iconNoitce.png.webp?version=1583111633321
+        "
+        >
+          <a
+            v-for="(item, i) in noticeBar"
+            :key="i"
+            :href="item.link"
+            @click="openDialogModal(item)"
+          >{{item.content}}</a>
+        </van-notice-bar>
+
+        <div class="noticebar__right">
+          <picture>
+            <source
+              srcset="https://h5static.0am08m.com/assets/v4_home/iconHotEvents.png.webp?version=1583773880435"
+              type="image/webp"
+            />
+            <img src="https://h5static.0am08m.com/assets/v4_home/iconHotEvents.png" alt />
+          </picture>
+        </div>
+      </div>
     </div>
 
     <div class="features">
@@ -108,10 +134,11 @@
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import { Dialog } from "vant";
 
 export default {
   name: "pageIndex",
-  components: { VueSlickCarousel },
+  components: { VueSlickCarousel, [Dialog.Component.name]: Dialog.Component },
   data() {
     return {
       settings: {
@@ -144,6 +171,26 @@ export default {
           title: "棋牌",
           link: "boardgame"
         }
+      ],
+      noticeBar: [
+        {
+          title: "系统例行维护",
+          content:
+            "尊敬的客户：我司BBIN真人于2020年3月4日（周三）09:00-11:25进行系统例行维护，届时BBIN真人场馆将无法进行游戏和转账，其他场馆正常运行，请维护前将场馆内的余额转出，给您带来不便还请谅解。谢谢！",
+          link: "#"
+        },
+        {
+          title: "绿茵逐鹿 点球成金",
+          content:
+            "尊敬的客户：【绿茵逐鹿 点球成金】优惠 【3月11号 布里斯托流浪vs桑德兰 】布里斯托流浪共产生(1)粒点球得分，彩金已经发放完毕，活动详情请至优惠活动页面了解！",
+          link: "#"
+        },
+        {
+          title: "欧冠返现666",
+          content:
+            "尊敬的客户：【欧冠返现666】在3月10日至3月19日期间，投注欧冠，累计有效投注达到指定金额，即可获得随机最高666元红包！仅需一倍流水即可提款！",
+          link: "#"
+        }
       ]
     };
   },
@@ -158,6 +205,22 @@ export default {
   methods: {
     setActive(item) {
       this.$store.dispatch("pageIndex/changeGameMenu", item);
+    },
+    openDialogModal(item) {
+      Dialog.confirm({
+        title: item.title,
+        message: item.content,
+        confirmButtonText: "查看全部",
+        cancelButtonText: "关闭",
+        cancelButtonColor: "#000",
+        confirmButtonColor: "#d2b79c"
+      })
+        .then(() => {
+          // on confirm
+        })
+        .catch(() => {
+          // on cancel
+        });
     }
   }
 };
@@ -171,6 +234,10 @@ $desc: #a5a9b3;
   display: flex;
   justify-content: $j;
   align-items: $a;
+}
+
+.pageIndex {
+  margin: 3rem;
 }
 
 header {
@@ -215,26 +282,45 @@ header {
   border-radius: 2rem;
 }
 
-.slick-custom-item {
-  margin: 0 3.7rem;
-}
-
 .slick-dots {
-  bottom: 30px;
+  bottom: 0rem;
 }
 
 .noticebar {
   width: 100%;
   height: 100%;
-  font-size: 0.24rem;
+  font-size: 3.2rem;
+  position: relative;
+  &__left {
+    display: inline-block;
+    position: absolute;
+    left: 2rem;
+    top: 2.8rem;
+    width: 4.3rem;
+    z-index: 3;
+  }
   &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 10.5rem;
+    right: 0;
+    top: 0;
+
     margin-left: 1rem;
+
     img {
-      width: 7.625rem;
-      height: 2.6875rem;
+      width: 15.7rem;
+      height: 5.45rem;
     }
   }
+  a {
+    font-size: 3.2rem;
+    color: #9aa4c2;
+  }
 }
+
 
 .features {
   display: flex;
@@ -253,15 +339,11 @@ header {
 
       h1 {
         color: $title;
-        padding: 0;
-        font-size: 2.4rem;
-        margin: 0;
+        font-size: 3.6rem;
       }
       p {
-        margin: 0;
-        padding: 0;
         color: $desc;
-        font-size: 1.8rem;
+        font-size: 3rem;
       }
     }
 
@@ -274,39 +356,37 @@ header {
 
       &__item {
         margin-right: 2rem;
+        cursor: pointer;
+
+
         div {
           background: url(https://h5static.0am08m.com/assets/v4_mine/user_home_icon/out/img/sprite.png?version=1583111633321)
             no-repeat;
-          /* background-position: 0 0; */
-          width: 7.5rem;
-          height: 7.5rem;
+          background-size: 101rem;
+          width: 9.4rem;
+          height: 9.4rem;
         }
 
         span {
-          font-size: 1.5rem;
+          font-size: 3.4rem;
           color: #b1887f;
+          font-weight: 400;
           display: inline-block;
-          width: 0.52rem;
           text-align: center;
-          font-size: 0.2rem;
-          color: #9aa4c2;
-          position: absolute;
-          right: 0.04rem;
-          top: 0.26rem;
         }
       }
 
       &__item:first-child div {
-        background-position: 0 0;
+        background-position: 1rem 0;
       }
       &__item:nth-child(2) div {
-        background-position: -74px 0;
+        background-position: -8rem 0;
       }
       &__item:nth-child(3) div {
-        background-position: -148px 0;
+        background-position: -17rem 0;
       }
       &__item:nth-child(4) div {
-        background-position: -222px 0;
+        background-position: -26rem 0;
       }
     }
   }
