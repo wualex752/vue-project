@@ -122,7 +122,7 @@ footer {
         background-position: -3.96rem -.04rem;
       }
       &:nth-child(4) div {
-        background-position: -64rem -0rem;
+        background-position: -5.08rem -.04rem;
       }
       a {
         color: #d2b79c;
