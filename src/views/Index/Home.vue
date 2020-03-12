@@ -8,7 +8,7 @@
           @click="setActive('index')"
           :class="{ active: activeItem == 'index' }">
           <router-link :to="{ name: 'game', params: {vendor: 'sport'} }">
-            <div></div>
+            <div class="webp"></div>
             首頁
           </router-link>
         </li>
@@ -16,14 +16,15 @@
           @click="setActive('discount')"
           :class="{ active: activeItem == 'discount' }">
           <router-link :to="{ name: 'discount', params: {category: 'all'} }">
-            <div></div>優惠
+            <div class="webp"></div>
+            優惠
           </router-link>
         </li>
         <li
           @click="setActive('customer')"
           :class="{ active: activeItem == 'customer' }">
           <router-link :to="{ name: 'customer' }">
-            <div></div>
+            <div class="webp"></div>
             客服
           </router-link>
         </li>
@@ -31,7 +32,7 @@
           @click="setActive('myCenter')"
           :class="{ active: activeItem == 'myCenter' }">
           <router-link :to="{ name: 'myCenter' }">
-            <div></div>
+            <div class="webp"></div>
             我的
           </router-link>
         </li>
@@ -121,6 +122,7 @@ footer {
     }
 
     div {
+      background-image: url("hhttps://h5static.0am08m.com/assets/v4_common/tabBar.png");
       background-image: url("https://h5static.0am08m.com/assets/v4_common/tabBar.png.webp?version=1583773880435");
       background-repeat: no-repeat;
       width: 9rem;
