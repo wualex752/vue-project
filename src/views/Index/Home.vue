@@ -36,12 +36,14 @@ export default {
   data() {
     return {
       active: 0,
-      activeItem: "index"
     };
   },
   computed: {
     switchRegisterModal() {
       return this.$store.state.pageIndex.switchRegisterModal;
+    },
+    activeItem() {
+      return this.$store.state.pageIndex.tabbarMenu;
     }
   },
   methods: {
@@ -50,7 +52,7 @@ export default {
       if (this.switchRegisterModal) {
         this.closeModal();
       }
-      this.activeItem = item;
+      this.$store.dispatch('pageIndex/changeTabbarMenu', item);
     },
     closeModal() {
       this.$store.dispatch("pageIndex/switchRegisterModal", this.switchModal);

@@ -217,7 +217,6 @@ header {
 }
 
 .customer {
-  /* background: #f8f8f8; */
   padding: 0.4rem 0.28rem;
   background-color: #fff;
   -webkit-box-flex: 1;
