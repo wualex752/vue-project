@@ -15,6 +15,8 @@ import { Tab, Tabs } from 'vant';
 import { Lazyload } from 'vant';
 
 import './utils/rem';
+import './utils/webp-detect';
+
 Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(NavBar);
