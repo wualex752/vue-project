@@ -246,10 +246,10 @@ header {
         float: left;
       }
       h4 {
-        font-size: .4rem;
-    font-weight: 700;
-    line-height: .56rem;
-    margin-left: .1rem;
+        font-size: 0.4rem;
+        font-weight: 700;
+        line-height: 0.56rem;
+        margin-left: 0.1rem;
       }
     }
 
@@ -262,6 +262,7 @@ header {
       flex: 1;
 
       li {
+        padding: 0.26rem 0.4rem 0;
         height: 2rem;
         -webkit-box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
         box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
@@ -270,6 +271,15 @@ header {
         color: #fff;
 
         &:first-child {
+          position: relative;
+          height: 100%;
+          padding: 0.26rem 0.4rem 0;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          background-image: url(https://h5static.0am08m.com/assets/v4_customer/customer_item_bg.png?version=1584615755214);
+          background-repeat: no-repeat;
+          background-size: auto 100%;
+          background-position: top 0 right 0;
           background-image: linear-gradient(254deg, #f8d5c0, #ce8a70);
         }
 

@@ -132,6 +132,8 @@
               </li>
             </ul>
           </div>
+
+          <!-- 點Button右邊出現 -->
           <div class="game__right">
             <transition name="slide-fade">
               <router-view></router-view>
@@ -182,7 +184,7 @@ export default {
         },
         {
           title: "棋牌",
-          link: "boardgame"
+          link: "card"
         }
       ],
       noticeBar: [
@@ -433,7 +435,6 @@ header {
         background-repeat: no-repeat;
         background-size: cover;
         border-bottom: 1px solid #bd9f7f;
-        -webkit-box-shadow: 0 0.08rem 0.12rem 0 rgba(168, 135, 102, 0.5);
         box-shadow: 0 0.08rem 0.12rem 0 rgba(168, 135, 102, 0.5);
         border-bottom-left-radius: 0.24rem;
         border-bottom-right-radius: 0.24rem;
@@ -441,7 +442,6 @@ header {
         height: 0.8rem;
         margin-bottom: 0.2rem;
         border-radius: 0.2rem;
-        -webkit-box-shadow: 0 0.08rem 0.12rem 0 rgba(65, 70, 92, 0.3);
         box-shadow: 0 0.08rem 0.12rem 0 rgba(65, 70, 92, 0.3);
         background-image: url(https://h5static.0am08m.com/assets/v4_home/tabNormal.png?version=1583773880435);
         background-repeat: no-repeat;
@@ -451,25 +451,24 @@ header {
         position: relative;
         display: flex;
         justify-self: space-between;
-        -webkit-box-pack: justify;
 
         &:first-child div {
-          background-position: -0.04rem -0.04rem;
+          background-position: -0.04rem -0.1rem;
         }
         &:nth-child(2) div {
-          background-position: -0.04rem -1rem;
+          background-position: -0.04rem -1.1rem;
         }
         &:nth-child(3) div {
-          background-position: -0.04rem -1.96rem;
+          background-position: -0.04rem -2.04rem;
         }
         &:nth-child(4) div {
-          background-position: -0.04rem -2.92rem;
+          background-position: -0.04rem -2.98rem;
         }
         &:nth-child(5) div {
-          background-position: -0.04rem -3.88rem;
+          background-position: -0.04rem -3.94rem;
         }
         &:nth-child(6) div {
-          background-position: -0.04rem -4.84rem;
+          background-position: -0.04rem -4.89rem;
         }
       }
 
