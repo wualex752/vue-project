@@ -6,30 +6,33 @@ import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
-import { NoticeBar } from 'vant';
-import "vant/lib/index.css";
-import { Tabbar, TabbarItem } from 'vant';
-import { NavBar } from 'vant';
-import { Tab, Tabs } from 'vant';
-import { Lazyload } from 'vant';
+Vue.use(Vant);
+// import { NoticeBar } from 'vant';
+// import "vant/lib/index.css";
+// import { Tabbar, TabbarItem } from 'vant';
+// import { NavBar } from 'vant';
+// import { Tab, Tabs } from 'vant';
+// import { Lazyload } from 'vant';
 
 import './utils/rem';
 import './utils/webp-detect';
 
-Vue.use(Tab);
-Vue.use(Tabs);
-Vue.use(NavBar);
-Vue.use(Tabbar);
-Vue.use(TabbarItem);
-Vue.use(NoticeBar);
-Vue.use(Lazyload);
+// Vue.use(Tab);
+// Vue.use(Tabs);
+// Vue.use(NavBar);
+// Vue.use(Tabbar);
+// Vue.use(TabbarItem);
+// Vue.use(NoticeBar);
+// Vue.use(Lazyload);
 
 
-import { Col, Row } from 'vant';
+// import { Col, Row } from 'vant';
 
-Vue.use(Col);
-Vue.use(Row);
+// Vue.use(Col);
+// Vue.use(Row);
 
 Vue.config.productionTip = false;
 

@@ -3,14 +3,14 @@ const state = {
 };
 
 const mutations = {
-  CATEGORY_MENU(state, payload) {
+  ADD_CATEGORY_MENU(state, payload) {
     state.categoryMenu = payload;
   },
 };
 
 const actions = {
   changeCategoryMenu({ commit }, value) {
-    commit('CATEGORY_MENU', value);
+    commit('ADD_CATEGORY_MENU', value);
   },
 };
 

@@ -25,7 +25,6 @@ export default {
       return this.$store.state.pageIndex.gameMenu;
     },
     length() {
-      // 圖片
       return this.type[this.gameMenu].length;
     }
   },

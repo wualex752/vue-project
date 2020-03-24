@@ -9,10 +9,10 @@
               <a>全部</a>
             </li>
           </router-link>
-          <router-link :to=" {name: 'discount', params: {category: 'sports'}} ">
+          <router-link :to=" {name: 'discount', params: {category: 'sport'}} ">
             <li
-              @click="setActive('sports')"
-              :class="{ active: activeItem == 'sports' }"
+              @click="setActive('sport')"
+              :class="{ active: activeItem == 'sport' }"
               class="nav-item"
             >
               <a>体育</a>
@@ -36,10 +36,10 @@
               <a>彩票</a>
             </li>
           </router-link>
-          <router-link :to=" {name: 'discount', params: {category: 'slot'}} ">
+          <router-link :to=" {name: 'discount', params: {category: 'eGame'}} ">
             <li
-              @click="setActive('slot')"
-              :class="{ active: activeItem == 'slot' }"
+              @click="setActive('eGame')"
+              :class="{ active: activeItem == 'eGame' }"
               class="nav-item"
             >
               <a>电子</a>
@@ -50,7 +50,9 @@
     </header>
 
     <div class="discount-content">
-      <Category />
+      <transition name="slide-fade">
+        <Category />
+      </transition>
     </div>
   </div>
 </template>
@@ -62,16 +64,20 @@ export default {
   components: {
     Category
   },
+  computed: {
+    activeItem() {
+      return this.$store.state.category.categoryMenu;
+    }
+  },
   data() {
     return {
-      activeItem: "all",
       tabList: [
         {
           value: "all",
           name: "全部"
         },
         {
-          value: "sports",
+          value: "sport",
           name: "体育"
         },
         {
@@ -91,7 +97,7 @@ export default {
   },
   methods: {
     setActive(item) {
-      this.activeItem = item;
+      this.$store.dispatch("category/changeCategoryMenu", item);
     }
   }
 };
@@ -131,7 +137,7 @@ header {
     height: 1rem !important;
     box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 0, 0, 0.05);
 
-    .nav-item {
+    .nav-item a {
       cursor: pointer;
       text-align: center;
       height: 1rem;
@@ -141,6 +147,12 @@ header {
       box-sizing: border-box;
       float: left;
       position: relative;
+      font-size: 0.32rem;
+      color: #4a4a4a;
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
 
       &.active {
         a {

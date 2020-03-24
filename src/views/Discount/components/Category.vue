@@ -1,62 +1,179 @@
 <template>
   <div class="category">
-    <div class="category-item" v-for="(item,i) in list" :key="'category-' + i">
-      <a href="#" @click="setActive(item.link)" :class="{ active: activeItem == item.link }">
-        <div v-if="i%2 == 1" class="category-item__tag category-item__tag__news"></div>
-        <div v-if="i%2 != 1" class="category-item__tag category-item__tag__daily"></div>
-        <div class="category-item__img">
-          <img
-            class="img-fluid border--radius"
-            src="https://static.0am08m.com//prod/activity/m_d01809c7741cc154254b6235015ef6ebb88b48a8.jpg"
-            alt
-          />
-        </div>
-        <div class="category-item__date">
-          <i></i>
-          <span>
-            2020-03-07
-            至
-            2020-03-09
-          </span>
-        </div>
-      </a>
-    </div>
+    <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+      <div class="category-item" v-for="(item,i) in type[activeItem]" :key="'category-' + i">
+        <a :href="item.link">
+          <!-- 新人Tag -->
+          <div v-if="item.newbie" class="category-item__tag category-item__tag__newbie"></div>
+          <!-- 最新Tag -->
+          <div v-if="item.isNew" class="category-item__tag category-item__tag__news"></div>
+          <!-- 日常Tag -->
+          <div v-if="item.daily" class="category-item__tag category-item__tag__daily"></div>
+
+          <div class="category-item__img">
+            <img class="img-fluid border--radius" :src="item.img" alt />
+          </div>
+          <div class="category-item__date">
+            <i></i>
+            <span>{{item.date}}</span>
+          </div>
+        </a>
+      </div>
+    </van-pull-refresh>
   </div>
 </template>
 
 <script>
 export default {
   name: "category",
-  data() {
-    return {
-      list: [
-        {
-          link: "#",
-          img:
-            "https://static.0am08m.com//prod/activity/m_d01809c7741cc154254b6235015ef6ebb88b48a8.jpg"
-        },
-        {
-          link: "#",
-          img:
-            "https://static.0am08m.com//prod/activity/m_d01809c7741cc154254b6235015ef6ebb88b48a8.jpg"
-        },
-        {
-          link: "#",
-          img:
-            "https://static.0am08m.com//prod/activity/m_d01809c7741cc154254b6235015ef6ebb88b48a8.jpg"
-        }
-      ]
-    };
-  },
   computed: {
     activeItem() {
-      return this.$store.state.changeCategoryMenu;
+      return this.$store.state.category.categoryMenu;
+    },
+    content() {
+      return this.type[this.activeItem];
     }
   },
+  data() {
+    return {
+      isLoading: false,
+      type: {
+        // 全部體育真人彩票墊子
+        all: [],
+        sport: [
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_6ef9ef9caf6cb1d79af0478c8b28a878f49c4284.jpg",
+            isNew: true,
+            date: "2020-03-27 至 2020-04-09"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_9881662c441f26b486e3d2666f7083041413f405.jpg",
+            isNew: true,
+            date: "2020-03-20 至 2020-03-26"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_026a3ff94eb976e16a889e2aca3e864dd5bcbf60.jpg",
+            isNew: true,
+            date: "2020-03-27 至 2020-04-09"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_51b684d459d9fb2a7c56738d4777467e24e4916b.jpg",
+            isNew: true,
+            date: "2020-03-27 至 2020-04-09"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_c4c5e2f05c3c995372316581da931ebec096fcdd.jpg",
+            isNew: false,
+            daily: true,
+            date: "2020-03-27 至 2020-04-09"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_161d5812c9e2f204207d445e58a56f6f2c6d1c74.jpg",
+            isNew: false,
+            daily: true,
+            date: "长期活动"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/f32d42bfecc30d2aabdf1a5d2f4ca571ef64ed31.png",
+            isNew: false,
+            daily: false,
+            newbie: true,
+            date: "长期活动"
+          }
+        ],
+        live: [
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_9881662c441f26b486e3d2666f7083041413f405.jpg",
+            isNew: true,
+            date: "2020-04-01 至 2020-04-19"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_6ef9ef9caf6cb1d79af0478c8b28a878f49c4284.jpg",
+            isNew: true,
+            date: "2020-03-27 至 2020-04-09"
+          }
+        ],
+        lottery: [
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_6ef9ef9caf6cb1d79af0478c8b28a878f49c4284.jpg",
+            isNew: true,
+            date: "2020-04-01 至 2020-04-19"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_9881662c441f26b486e3d2666f7083041413f405.jpg",
+            isNew: true,
+            date: "2020-04-01 至 2020-04-19"
+          }
+        ],
+        eGame: [
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_5c6ae452dae1603d784f5548b8d8cf23a50becae.jpg",
+            isNew: false,
+            newbie: true,
+            date: "2020-04-01 至 2020-04-30"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_9881662c441f26b486e3d2666f7083041413f405.jpg",
+            isNew: true,
+            date: "2020-04-01 至 2020-04-19"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_6e8459f0d473242a02efa527ee96b30657b536c9.jpg",
+            isNew: false,
+            daily: true,
+            date: "2020-04-01 至 2020-04-19"
+          },
+          {
+            link: "#",
+            img:
+              "https://static.0am08m.com//prod/activity/m_660a5528fd21f9b3dabc5571ce76514f80787b96.jpg",
+            isNew: false,
+            daily: true,
+            date: "2020-04-01 至 2020-04-19"
+          }
+        ]
+      }
+    };
+  },
   methods: {
-    setActive(item) {
-      this.$store.dispatch("category/changeCategoryMenu", item);
+    onRefresh() {
+      setTimeout(() => {
+        this.$toast("刷新成功");
+        this.isLoading = false;
+        this.count++;
+      }, 1000);
     }
+  },
+  created() {
+    this.type.all = this.type[this.activeItem];
   }
 };
 </script>
@@ -76,7 +193,8 @@ export default {
     height: 2.8rem;
     width: calc(100% - 0.56rem);
 
-    &__tag { // 最新 Tag
+    &__tag {
+      // 最新 Tag
       position: absolute;
       top: 0.2rem;
       left: -0.06rem;
@@ -87,15 +205,21 @@ export default {
       background-repeat: no-repeat;
       background-size: 4.12rem 0.42rem;
 
-      &__news { // 最新 Tag
+      &__news {
+        // 最新 Tag
         background-position: 0;
       }
 
-      &__daily { // 日常 Tag
-        background-position: -.98rem;
+      &__daily {
+        // 日常 Tag
+        background-position: -0.98rem;
+      }
+
+      &__newbie {
+        // 新人 Tag
+        background-position: -1.96rem;
       }
     }
-
 
     &__img {
       position: absolute;
